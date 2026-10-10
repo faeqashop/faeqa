@@ -1,4 +1,4 @@
-import { definePrismaConfig } from "prisma/config";
+import { definePrismaConfig } from "@prisma/config";
 
 export default definePrismaConfig({
   skills: {
