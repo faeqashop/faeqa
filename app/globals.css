@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+/* এটি Tailwind-এর অটোমেটিক ডার্ক মোড পুরোপুরি বন্ধ করে দেবে */
+@variant dark (false);
+
+/* আমাদের ব্র্যান্ডের প্রিমিয়াম কালারগুলো */
+@theme {
+  --color-brand-pink: #FF3366;
+  --color-brand-light-pink: #FF668F;
+  --color-brand-dark-pink: #CC2952;
+  --color-brand-black: #1A1A1A;
+  --color-brand-gray: #F5F5F5;
+}
+
+/* ব্রাউজারকে জোর করে লাইট মোডে (সাদা) রাখা */
+:root {
+  color-scheme: light !important;
+}
+
+body {
+  background-color: #ffffff !important;
+  color: #1A1A1A !important;
+}
