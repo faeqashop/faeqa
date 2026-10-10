@@ -1,12 +1,14 @@
+export const dynamic = "force-dynamic";
 import prisma from "../../lib/prisma";
 import Link from "next/link";
 import CategoryForm from "../../components/admin/CategoryForm";
 import ProductForm from "../../components/admin/ProductForm";
-import LogoutButton from "../../components/admin/LogoutButton";
 
+// Next.js-এর ক্যাশিং এরর সমাধানের জন্য
 export const instant = false;
 
 export default async function AdminDashboard() {
+  // ডাটাবেস থেকে ক্যাটাগরি এবং প্রোডাক্ট আনা হচ্ছে
   const categories = await prisma.category.findMany({
     orderBy: { createdAt: "desc" },
   });
@@ -20,22 +22,17 @@ export default async function AdminDashboard() {
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-7xl mx-auto">
         
-        {/* ড্যাশবোর্ড হেডার ও বাটনগুলো */}
+        {/* ড্যাশবোর্ড হেডার ও View All Orders বাটন */}
         <div className="flex flex-col sm:flex-row justify-between items-center mb-10 gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-200">
           <h1 className="text-3xl md:text-4xl font-black text-black">
             Admin <span className="text-[#FF3366]">Dashboard</span>
           </h1>
-          
-          {/* ডানপাশের বাটনগুলো */}
-          <div className="flex gap-3">
-            <Link 
-              href="/admin/orders" 
-              className="bg-[#FF3366] text-white px-8 py-3 rounded-lg font-bold hover:bg-[#e62e5c] transition-colors shadow-[0_0_15px_rgba(255,51,102,0.2)] flex items-center gap-2 text-lg"
-            >
-              📦 View All Orders
-            </Link>
-            <LogoutButton />
-          </div>
+          <Link 
+            href="/admin/orders" 
+            className="bg-[#FF3366] text-white px-8 py-3 rounded-lg font-bold hover:bg-[#e62e5c] transition-colors shadow-[0_0_15px_rgba(255,51,102,0.2)] flex items-center gap-2 text-lg"
+          >
+            📦 View All Orders
+          </Link>
         </div>
 
         {/* মেইন গ্রিড সেকশন (বাম পাশে ফর্ম, ডান পাশে লিস্ট) */}
